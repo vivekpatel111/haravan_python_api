@@ -139,6 +139,7 @@ class HaravanResource(ActiveResource, mixins.Countable):
         cls.user = None
         cls.password = None
         cls.headers['X-Haravan-Access-Token'] = session.token
+        cls.headers['Authorization'] = 'Bearer ' + str(session.token)
 
     @classmethod
     def clear_session(cls):
@@ -146,3 +147,4 @@ class HaravanResource(ActiveResource, mixins.Countable):
         cls.user = None
         cls.password = None
         cls.headers.pop('X-Haravan-Access-Token', None)
+        cls.headers.pop('Authorization', None)
